@@ -12,12 +12,12 @@ twoway ///
     legend(order(1 "Data" 2 "Linear fit")) ///
     graphregion(color(white))
 
-graph export "output/figures/unemployment_inflation.png", ///
+graph export "results/figures/unemployment_inflation.png", ///
     replace width(1400)
 
 reg unrate inflation
 
-esttab using "output/tables/phillips_regression.txt", ///
+esttab using "results/tables/phillips_regression.txt", ///
     replace se label ///
     title("Regression of unemployment on inflation") ///
     b(%6.3f) se(%6.3f)

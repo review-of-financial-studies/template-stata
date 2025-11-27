@@ -1,9 +1,10 @@
---------------------------------------------------------------------------------
+--------------------------------------------------
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-
-> stata/output/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/output/log/_
+> main.log
   log type:  text
- opened on:  27 Nov 2025, 07:57:37
+ opened on:  27 Nov 2025, 12:13:11
 
 . 
 . do "code/download_raw_data.do"
@@ -14,7 +15,8 @@
 
 . 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=UNRATE", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 933 obs)
@@ -41,7 +43,8 @@ file data/raw/unrate_raw.dta saved
 . clear
 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=CPIAUCSL", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 945 obs)
@@ -81,10 +84,13 @@ end of do-file
     Result                      Number of obs
     -----------------------------------------
     Not matched                            12
-        from master                         0  (_merge==1)
-        from using                         12  (_merge==2)
+        from master                         0  (_m
+> erge==1)
+        from using                         12  (_m
+> erge==2)
 
-    Matched                               933  (_merge==3)
+    Matched                               933  (_m
+> erge==3)
     -----------------------------------------
 
 . keep if _merge == 3
@@ -146,44 +152,71 @@ end of do-file
 
 . 
 . twoway ///
->     (scatter unrate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
->     (lfit unrate inflation, lcolor(red) lwidth(medium)), ///
+>     (scatter unrate inflation, msymbol(circle) m
+> size(small) mcolor(blue)) ///
+>     (lfit unrate inflation, lcolor(red) lwidth(m
+> edium)), ///
 >     ytitle("Unemployment rate (%)") ///
 >     xtitle("Inflation, y/y (%)") ///
->     title("Scatterplot of Unemployment vs. Inflation with Fitted Line") ///
+>     title("Scatterplot of Unemployment vs. Infla
+> tion with Fitted Line") ///
 >     legend(order(1 "Data" 2 "Linear fit")) ///
 >     graphregion(color(white))
 
 . 
-. graph export "output/figures/unemployment_inflation.png", ///
+. graph export "results/figures/unemployment_infla
+> tion.png", ///
 >     replace width(1400)
 file
-    /Users/krise/Documents/GitHub/review-of-financial-studies/template-stata/o
-    > utput/figures/unemployment_inflation.png saved as PNG format
+    /Users/krise/Documents/GitHub/review-of-fina
+    > ncial-studies/template-stata/results/figur
+    > es/unemployment_inflation.png saved as PNG
+    format
 
 . 
 . reg unrate inflation
 
-      Source |       SS           df       MS      Number of obs   =       669
--------------+----------------------------------   F(1, 667)       =      1.87
-       Model |  5.49819838         1  5.49819838   Prob > F        =    0.1717
-    Residual |  1958.66643       667  2.93653138   R-squared       =    0.0028
--------------+----------------------------------   Adj R-squared   =    0.0013
-       Total |  1964.16463       668  2.94036621   Root MSE        =    1.7136
+      Source |       SS           df       MS     
+>  Number of obs   =       669
+-------------+----------------------------------  
+>  F(1, 667)       =      1.87
+       Model |  5.49819838         1  5.49819838  
+>  Prob > F        =    0.1717
+    Residual |  1958.66643       667  2.93653138  
+>  R-squared       =    0.0028
+-------------+----------------------------------  
+>  Adj R-squared   =    0.0013
+       Total |  1964.16463       668  2.94036621  
+>  Root MSE        =    1.7136
 
-------------------------------------------------------------------------------
-      unrate | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-   inflation |   .0331725   .0242429     1.37   0.172    -.0144292    .0807741
-       _cons |   5.934933   .1151634    51.53   0.000     5.708806    6.161059
-------------------------------------------------------------------------------
+--------------------------------------------------
+> ----------------------------
+      unrate | Coefficient  Std. err.      t    P>
+> |t|                                             
+>         [95% con                                
+>                 f. interval]
+-------------+------------------------------------
+> ----------------------------
+   inflation |   .0331725   .0242429     1.37   0.
+> 172                                             
+>        -.0144292                                
+>                     .0807741
+       _cons |   5.934933   .1151634    51.53   0.
+> 000                                             
+>         5.708806                                
+>                     6.161059
+--------------------------------------------------
+> ----------------------------
 
 . 
-. esttab using "output/tables/phillips_regression.txt", ///
+. esttab using "results/tables/phillips_regression
+> .txt", ///
 >     replace se label ///
->     title("Regression of unemployment on inflation") ///
+>     title("Regression of unemployment on inflati
+> on") ///
 >     b(%6.3f) se(%6.3f)
-(output written to output/tables/phillips_regression.txt)
+(output written to results/tables/phillips_regress
+> ion.txt)
 
 . 
 end of do-file
@@ -191,8 +224,9 @@ end of do-file
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-
-> stata/output/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/output/log/_
+> main.log
   log type:  text
- closed on:  27 Nov 2025, 07:57:39
---------------------------------------------------------------------------------
+ closed on:  27 Nov 2025, 12:13:13
+--------------------------------------------------
