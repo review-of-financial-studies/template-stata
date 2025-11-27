@@ -123,7 +123,7 @@ The replication package contains four Stata do-files:
 3. **`code/analyze_data.do`**: Produces the scatterplot with fitted line and runs the regression analysis
 4. **`code/_main.do`**: Master file that runs all programs in sequence and creates a log file
 
-All output is automatically saved to the appropriate directories (`output/figures/`, `output/tables/`, and `output/log/`).
+All results are automatically saved to the appropriate directories (`results/figures/`, `results/tables/`, and `results/log/`).
 
 ### License for Code
 
@@ -141,7 +141,7 @@ The replication package expects the following directory structure (folders will 
 ├── data/
 │   ├── raw/
 │   └── analysis/
-└── output/
+└── results/
     ├── figures/
     ├── tables/
     └── log/
@@ -171,8 +171,8 @@ The provided code reproduces:
 
 | Figure/Table # | Program | Line Number | Output file | Note |
 |----------------|---------|-------------|-------------|------|
-| Figure 1 | code/analyze_data.do | 5-15 | output/figures/unemployment_inflation.png | Scatterplot with fitted line |
-| Table 1 | code/analyze_data.do | 20-24 | output/tables/phillips_regression.txt | Regression results |
+| Figure 1 | code/analyze_data.do | 5-15 | results/figures/unemployment_inflation.png | Scatterplot with fitted line |
+| Table 1 | code/analyze_data.do | 20-24 | results/tables/phillips_regression.txt | Regression results |
 
 ## References
 
