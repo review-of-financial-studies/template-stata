@@ -143,8 +143,8 @@ The replication package expects the following directory structure (folders will 
 │   └── analysis/
 └── results/
     ├── figures/
-    ├── tables/
     └── log/
+    ├── tables/
 ```
 
 ### Replication Steps
