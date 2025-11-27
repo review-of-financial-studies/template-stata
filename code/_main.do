@@ -4,7 +4,7 @@ set more off
 
 capture log close
 
-local dirs "data" "data/raw" "data/analysis" "output" "output/figures" "output/tables" "output/log" "code"
+local dirs "data" "data/raw" "data/analysis" "results" "results/figures" "results/tables" "output" "output/log" "code"
 foreach dir of local dirs {
     capture mkdir "`dir'"
 }
