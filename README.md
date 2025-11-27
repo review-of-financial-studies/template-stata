@@ -62,9 +62,9 @@ The Consumer Price Index for All Urban Consumers (CPI-U) data is also sourced fr
 
 | Data file | Source | Notes | Provided |
 |-----------|--------|-------|----------|
-| `data/raw/unrate_raw.dta` | FRED UNRATE | Downloaded by code | Yes |
-| `data/raw/cpi_raw.dta` | FRED CPIAUCSL | Downloaded by code | Yes |
-| `data/analysis/macro_analysis.dta` | Derived from above | Merged and processed data with calculated inflation rates | Yes |
+| `data/raw/unemployment_rate.dta` | FRED UNRATE | Downloaded by code | Yes |
+| `data/raw/cpi.dta` | FRED CPIAUCSL | Downloaded by code | Yes |
+| `data/analysis/macro_data.dta` | Derived from above | Merged and processed data with calculated inflation rates | Yes |
 
 ## Computational Requirements
 
@@ -143,8 +143,8 @@ The replication package expects the following directory structure (folders will 
 │   └── analysis/
 └── results/
     ├── figures/
-    └── log/
-    ├── tables/
+    ├── log/
+    └── tables/
 ```
 
 ### Replication Steps

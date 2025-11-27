@@ -1,66 +1,29 @@
---------------------------------------------------------------------------------
+--------------------------------------------------
       name:  <unnamed>
-       log:  /files/results/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/results/log/
+> _main.log
   log type:  text
- opened on:  27 Nov 2025, 12:29:41
+ opened on:  27 Nov 2025, 19:00:44
 
 . 
 . do "code/download_raw_data.do"
 
 . clear all
-java.lang.NoClassDefFoundError: Could not initialize class java.awt.Toolkit
-        at java.desktop/java.awt.EventQueue.invokeLater(EventQueue.java:1314)
-        at com.stata.Javacall.closeAllWindow(Javacall.java:214)
-        at com.stata.Javacall.discard(Javacall.java:48)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.Unsatisfie
-> dLinkError: /usr/local/stata18/utilities/java/linux-x64/zulu-jdk17.0.7/lib/lib
-> awt_xawt.so: libXtst.so.6: cannot open shared object file: No such file or dir
-> ectory [in thread "main"]
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2389)
-        at java.base/java.lang.Runtime.load0(Runtime.java:755)
-        at java.base/java.lang.System.load(System.java:1953)
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/jdk.internal.loader.NativeLibraries.findFromPaths(NativeLib
-> raries.java:315)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:285)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2398)
-        at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
-        at java.base/java.lang.System.loadLibrary(System.java:1989)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1388)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1386)
-        at java.base/java.security.AccessController.doPrivileged(AccessControlle
-> r.java:318)
-        at java.desktop/java.awt.Toolkit.loadLibraries(Toolkit.java:1385)
-        at java.desktop/java.awt.Toolkit.initStatic(Toolkit.java:1423)
-        at java.desktop/java.awt.Toolkit.<clinit>(Toolkit.java:1397)
-        ... 3 more
-a Java runtime exception occurred
 
 . set more off
 
 . 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=UNRATE", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 933 obs)
 
 . 
-. rename (observation_date unrate) (date unrate)
+. rename (observation_date unrate) (date unemploym
+> ent_rate)
 
 . drop if missing(date)
 (0 observations deleted)
@@ -74,14 +37,15 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/unrate_raw.dta", replace
-file data/raw/unrate_raw.dta saved
+. save "data/raw/unemployment_rate.dta", replace
+file data/raw/unemployment_rate.dta saved
 
 . 
 . clear
 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=CPIAUCSL", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 945 obs)
@@ -101,8 +65,8 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/cpi_raw.dta", replace
-file data/raw/cpi_raw.dta saved
+. save "data/raw/cpi.dta", replace
+file data/raw/cpi.dta saved
 
 . 
 end of do-file
@@ -110,62 +74,24 @@ end of do-file
 . do "code/create_analysis_data.do"
 
 . clear all
-java.lang.NoClassDefFoundError: Could not initialize class java.awt.Toolkit
-        at java.desktop/java.awt.EventQueue.invokeLater(EventQueue.java:1314)
-        at com.stata.Javacall.closeAllWindow(Javacall.java:214)
-        at com.stata.Javacall.discard(Javacall.java:48)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.Unsatisfie
-> dLinkError: /usr/local/stata18/utilities/java/linux-x64/zulu-jdk17.0.7/lib/lib
-> awt_xawt.so: libXtst.so.6: cannot open shared object file: No such file or dir
-> ectory [in thread "main"]
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2389)
-        at java.base/java.lang.Runtime.load0(Runtime.java:755)
-        at java.base/java.lang.System.load(System.java:1953)
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/jdk.internal.loader.NativeLibraries.findFromPaths(NativeLib
-> raries.java:315)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:285)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2398)
-        at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
-        at java.base/java.lang.System.loadLibrary(System.java:1989)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1388)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1386)
-        at java.base/java.security.AccessController.doPrivileged(AccessControlle
-> r.java:318)
-        at java.desktop/java.awt.Toolkit.loadLibraries(Toolkit.java:1385)
-        at java.desktop/java.awt.Toolkit.initStatic(Toolkit.java:1423)
-        at java.desktop/java.awt.Toolkit.<clinit>(Toolkit.java:1397)
-        ... 3 more
-a Java runtime exception occurred
 
 . set more off
 
 . 
-. use "data/raw/unrate_raw.dta", clear
+. use "data/raw/unemployment_rate.dta", clear
 
-. merge 1:1 date using "data/raw/cpi_raw.dta"
+. merge 1:1 date using "data/raw/cpi.dta"
 
     Result                      Number of obs
     -----------------------------------------
     Not matched                            12
-        from master                         0  (_merge==1)
-        from using                         12  (_merge==2)
+        from master                         0  (_m
+> erge==1)
+        from using                         12  (_m
+> erge==2)
 
-    Matched                               933  (_merge==3)
+    Matched                               933  (_m
+> erge==3)
     -----------------------------------------
 
 . keep if _merge == 3
@@ -174,15 +100,15 @@ a Java runtime exception occurred
 . drop _merge
 
 . 
-. gen ddate = daily(date,"YMD")
+. gen date_daily = daily(date,"YMD")
 
-. gen mdate = mofd(ddate)
+. gen date_monthly = mofd(date_daily)
 
-. format mdate %tm
+. format date_monthly %tm
 
-. drop date ddate
+. drop date date_daily
 
-. rename mdate date
+. rename date_monthly date
 
 . tsset date, monthly
 
@@ -190,13 +116,10 @@ Time variable: date, 1948m1 to 2025m9
         Delta: 1 month
 
 . 
-. gen lcpi      = ln(cpi)
-
-. gen inflation = (lcpi - L12.lcpi) * 100
+. gen inflation = (cpi - L12.cpi) * 100
 (12 missing values generated)
 
-. 
-. drop if missing(inflation, unrate)
+. drop if missing(inflation, unemployment_rate)
 (12 observations deleted)
 
 . keep if date >= tm(1970m1)
@@ -205,13 +128,15 @@ Time variable: date, 1948m1 to 2025m9
 . 
 . label var date     "Month"
 
-. label var unrate    "Unemployment rate (%)"
+. label var unemployment_rate    "Unemployment rat
+> e (%)"
 
 . label var inflation "Inflation, CPI y/y (%)"
 
 . 
-. save "data/analysis/macro_analysis.dta", replace
-file data/analysis/macro_analysis.dta saved
+. save "data/analysis/macro_data.dta", replace
+(file data/analysis/macro_data.dta not found)
+file data/analysis/macro_data.dta saved
 
 . 
 end of do-file
@@ -219,93 +144,79 @@ end of do-file
 . do "code/analyze_data.do"
 
 . clear all
-java.lang.NoClassDefFoundError: Could not initialize class java.awt.Toolkit
-        at java.desktop/java.awt.EventQueue.invokeLater(EventQueue.java:1314)
-        at com.stata.Javacall.closeAllWindow(Javacall.java:214)
-        at com.stata.Javacall.discard(Javacall.java:48)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.Unsatisfie
-> dLinkError: /usr/local/stata18/utilities/java/linux-x64/zulu-jdk17.0.7/lib/lib
-> awt_xawt.so: libXtst.so.6: cannot open shared object file: No such file or dir
-> ectory [in thread "main"]
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2389)
-        at java.base/java.lang.Runtime.load0(Runtime.java:755)
-        at java.base/java.lang.System.load(System.java:1953)
-        at java.base/jdk.internal.loader.NativeLibraries.load(Native Method)
-        at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(
-> NativeLibraries.java:388)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:232)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:174)
-        at java.base/jdk.internal.loader.NativeLibraries.findFromPaths(NativeLib
-> raries.java:315)
-        at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibra
-> ries.java:285)
-        at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2398)
-        at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
-        at java.base/java.lang.System.loadLibrary(System.java:1989)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1388)
-        at java.desktop/java.awt.Toolkit$2.run(Toolkit.java:1386)
-        at java.base/java.security.AccessController.doPrivileged(AccessControlle
-> r.java:318)
-        at java.desktop/java.awt.Toolkit.loadLibraries(Toolkit.java:1385)
-        at java.desktop/java.awt.Toolkit.initStatic(Toolkit.java:1423)
-        at java.desktop/java.awt.Toolkit.<clinit>(Toolkit.java:1397)
-        ... 3 more
-a Java runtime exception occurred
 
 . set more off
 
 . 
-. use "data/analysis/macro_analysis.dta", clear
+. use "data/analysis/macro_data.dta", clear
 
 . 
 . twoway ///
->     (scatter unrate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
->     (lfit unrate inflation, lcolor(red) lwidth(medium)), ///
+>     (scatter unemployment_rate inflation, msymbo
+> l(circle) msize(small) mcolor(blue)) ///
+>     (lfit unemployment_rate inflation, lcolor(re
+> d) lwidth(medium)), ///
 >     ytitle("Unemployment rate (%)") ///
 >     xtitle("Inflation, y/y (%)") ///
->     title("Scatterplot of Unemployment vs. Inflation with Fitted Line") ///
+>     title("Scatterplot of Unemployment vs. Infla
+> tion with Fitted Line") ///
 >     legend(order(1 "Data" 2 "Linear fit")) ///
 >     graphregion(color(white))
 
 . 
-. graph export "results/figures/unemployment_inflation.png", ///
+. graph export "results/figures/unemployment_infla
+> tion.png", ///
 >     replace width(1400)
-(file results/figures/unemployment_inflation.png not found)
-file results/figures/unemployment_inflation.png saved as PNG format
+file
+    /Users/krise/Documents/GitHub/review-of-fina
+    > ncial-studies/template-stata/results/figur
+    > es/unemployment_inflation.png saved as PNG
+    format
 
 . 
-. reg unrate inflation
+. reg unemployment_rate inflation
 
-      Source |       SS           df       MS      Number of obs   =       669
--------------+----------------------------------   F(1, 667)       =      1.87
-       Model |  5.49819838         1  5.49819838   Prob > F        =    0.1717
-    Residual |  1958.66643       667  2.93653138   R-squared       =    0.0028
--------------+----------------------------------   Adj R-squared   =    0.0013
-       Total |  1964.16463       668  2.94036621   Root MSE        =    1.7136
+      Source |       SS           df       MS     
+>  Number of obs   =       669
+-------------+----------------------------------  
+>  F(1, 667)       =     68.89
+       Model |  183.885621         1  183.885621  
+>  Prob > F        =    0.0000
+    Residual |    1780.279       667  2.66908396  
+>  R-squared       =    0.0936
+-------------+----------------------------------  
+>  Adj R-squared   =    0.0923
+       Total |  1964.16463       668  2.94036621  
+>  Root MSE        =    1.6337
 
-------------------------------------------------------------------------------
-      unrate | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-   inflation |   .0331725   .0242429     1.37   0.172    -.0144292    .0807741
-       _cons |   5.934933   .1151634    51.53   0.000     5.708806    6.161059
-------------------------------------------------------------------------------
+--------------------------------------------------
+> ----------------------------
+unemployme~e | Coefficient  Std. err.      t    P>
+> |t|                                             
+>         [95% con                                
+>                 f. interval]
+-------------+------------------------------------
+> ----------------------------
+   inflation |   -.001481   .0001784    -8.30   0.
+> 000                                             
+>        -.0018314                                
+>                    -.0011307
+       _cons |   6.816553    .110516    61.68   0.
+> 000                                             
+>         6.599552                                
+>                     7.033554
+--------------------------------------------------
+> ----------------------------
 
 . 
-. esttab using "results/tables/phillips_regression.txt", ///
+. esttab using "results/tables/phillips_regression
+> .txt", ///
 >     replace se label ///
->     title("Regression of unemployment on inflation") ///
+>     title("Regression of unemployment on inflati
+> on") ///
 >     b(%6.3f) se(%6.3f)
-(file results/tables/phillips_regression.txt not found)
-(output written to results/tables/phillips_regression.txt)
+(output written to results/tables/phillips_regress
+> ion.txt)
 
 . 
 end of do-file
@@ -313,7 +224,9 @@ end of do-file
 . 
 . log close
       name:  <unnamed>
-       log:  /files/results/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/results/log/
+> _main.log
   log type:  text
- closed on:  27 Nov 2025, 12:29:44
---------------------------------------------------------------------------------
+ closed on:  27 Nov 2025, 19:00:45
+--------------------------------------------------
