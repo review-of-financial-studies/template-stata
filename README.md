@@ -5,12 +5,12 @@
 This repository serves as a template for reproducible Stata projects, addressing three common challenges:
 
 - **Dependencies**: The `dependencies.do` file ensures all required packages are installed automatically.
-- **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided as they only work on Windows.
+- **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided, as they are only supported on Windows.
 - **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) (version 1.1) for standardized replication packages.
 
 Addressing these challenges before submission significantly streamlines the review process, saving time and effort for both data editors and authors.
 
-The template includes a working example that downloads FRED macroeconomic data and analyzes the relationship between unemployment and inflation, producing one figure and one regression table.
+The template includes a working example that downloads FRED macroeconomic data and analyzes the relation between unemployment and inflation, producing one figure and one regression table.
 
 ## Data Availability and Provenance Statements
 
@@ -42,13 +42,13 @@ The unemployment rate data is downloaded from the Federal Reserve Economic Data 
 - **Series ID**: UNRATE
 - **URL**: https://fred.stlouisfed.org/series/UNRATE
 - **Access**: Public use, no registration required
-- **Format**: CSV (downloaded programmatically)
+- **Format**: CSV
 - **License**: Public domain (U.S. government data)
-- **Download method**: The code automatically downloads the data via direct URL
+- **Download method**: The code automatically downloads the data via the URL
 
 #### Consumer Price Index Data
 
-The Consumer Price Index for All Urban Consumers (CPI-U) data is also sourced from FRED. This series represents the monthly CPI-U index for all items in U.S. city average.
+The Consumer Price Index for All Urban Consumers (CPI-U) data is also sourced from FRED. This series represents the monthly CPI-U index for all items in the U.S. city average.
 
 - **Data source**: Federal Reserve Bank of St. Louis, FRED
 - **Series ID**: CPIAUCSL
@@ -56,7 +56,7 @@ The Consumer Price Index for All Urban Consumers (CPI-U) data is also sourced fr
 - **Access**: Public use, no registration required
 - **Format**: CSV
 - **License**: Public domain (U.S. government data)
-- **Download method**: The code automatically downloads the data via direct URL
+- **Download method**: The code automatically downloads the data via the URL
 
 ### Dataset List
 
@@ -112,7 +112,7 @@ Approximate storage space needed:
 
 #### Computational Details
 
-The code was last run on a **standard desktop machine with MacOS with internet connection and at least 100MB of free space**.
+The code was last run on a **standard desktop machine with MacOS with an internet connection and at least 100MB of free space**.
 
 ## Description of Programs/Code
 
@@ -127,13 +127,13 @@ All output is automatically saved to the appropriate directories (`output/figure
 
 ### License for Code
 
-The code is licensed under an MIT license. See LICENSE file for details. 
+The code is licensed under a MIT license. See LICENSE file for details. 
 
 ## Instructions to Replicators
 
 ### Directory Structure
 
-The replication package expects the following directory structure (folders will be created automatically if they don't exist):
+The replication package expects the following directory structure (folders will be created automatically if they do not exist):
 
 ```
 .
@@ -176,12 +176,10 @@ The provided code reproduces:
 
 ## References
 
-Federal Reserve Bank of St. Louis (FRED). "Unemployment Rate [UNRATE]." Retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/UNRATE
+Federal Reserve Bank of St. Louis (FRED). "Unemployment Rate [UNRATE]." Retrieved from FRED on November 27, 2025. Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/UNRATE.
 
-Federal Reserve Bank of St. Louis (FRED). "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average [CPIAUCSL]." Retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/CPIAUCSL
-
----
+Federal Reserve Bank of St. Louis (FRED). "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average [CPIAUCSL]." Retrieved from FRED on November 27, 2025. Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/CPIAUCSL.
 
 ## Acknowledgements
 
-This README template was adapted from the Social Science Data Editors' template README, available at https://social-science-data-editors.github.io/template_README/
+This README template was adapted from the Social Science Data Editors' README template, available at https://social-science-data-editors.github.io/template_README/
