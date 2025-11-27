@@ -6,7 +6,7 @@ This repository serves as a template for reproducible Stata projects, addressing
 
 - **Dependencies**: The `dependencies.do` file ensures all required packages are installed automatically.
 - **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided as they only work on Windows.
-- **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) for standardized replication packages.
+- **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) (version 1.1) for standardized replication packages.
 
 Addressing these challenges before submission significantly streamlines the review process, saving time and effort for both data editors and authors.
 
