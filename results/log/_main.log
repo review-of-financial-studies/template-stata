@@ -1,9 +1,10 @@
---------------------------------------------------------------------------------
+--------------------------------------------------
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-
-> stata/output/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/results/log/
+> _main.log
   log type:  text
- opened on:  27 Nov 2025, 07:57:37
+ opened on:  27 Nov 2025, 19:00:44
 
 . 
 . do "code/download_raw_data.do"
@@ -14,13 +15,15 @@
 
 . 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=UNRATE", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 933 obs)
 
 . 
-. rename (observation_date unrate) (date unrate)
+. rename (observation_date unrate) (date unemploym
+> ent_rate)
 
 . drop if missing(date)
 (0 observations deleted)
@@ -34,14 +37,15 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/unrate_raw.dta", replace
-file data/raw/unrate_raw.dta saved
+. save "data/raw/unemployment_rate.dta", replace
+file data/raw/unemployment_rate.dta saved
 
 . 
 . clear
 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph
+> .csv?id=CPIAUCSL", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 945 obs)
@@ -61,8 +65,8 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/cpi_raw.dta", replace
-file data/raw/cpi_raw.dta saved
+. save "data/raw/cpi.dta", replace
+file data/raw/cpi.dta saved
 
 . 
 end of do-file
@@ -74,17 +78,20 @@ end of do-file
 . set more off
 
 . 
-. use "data/raw/unrate_raw.dta", clear
+. use "data/raw/unemployment_rate.dta", clear
 
-. merge 1:1 date using "data/raw/cpi_raw.dta"
+. merge 1:1 date using "data/raw/cpi.dta"
 
     Result                      Number of obs
     -----------------------------------------
     Not matched                            12
-        from master                         0  (_merge==1)
-        from using                         12  (_merge==2)
+        from master                         0  (_m
+> erge==1)
+        from using                         12  (_m
+> erge==2)
 
-    Matched                               933  (_merge==3)
+    Matched                               933  (_m
+> erge==3)
     -----------------------------------------
 
 . keep if _merge == 3
@@ -93,15 +100,15 @@ end of do-file
 . drop _merge
 
 . 
-. gen ddate = daily(date,"YMD")
+. gen date_daily = daily(date,"YMD")
 
-. gen mdate = mofd(ddate)
+. gen date_monthly = mofd(date_daily)
 
-. format mdate %tm
+. format date_monthly %tm
 
-. drop date ddate
+. drop date date_daily
 
-. rename mdate date
+. rename date_monthly date
 
 . tsset date, monthly
 
@@ -109,13 +116,10 @@ Time variable: date, 1948m1 to 2025m9
         Delta: 1 month
 
 . 
-. gen lcpi      = ln(cpi)
-
-. gen inflation = (lcpi - L12.lcpi) * 100
+. gen inflation = (cpi - L12.cpi) * 100
 (12 missing values generated)
 
-. 
-. drop if missing(inflation, unrate)
+. drop if missing(inflation, unemployment_rate)
 (12 observations deleted)
 
 . keep if date >= tm(1970m1)
@@ -124,13 +128,15 @@ Time variable: date, 1948m1 to 2025m9
 . 
 . label var date     "Month"
 
-. label var unrate    "Unemployment rate (%)"
+. label var unemployment_rate    "Unemployment rat
+> e (%)"
 
 . label var inflation "Inflation, CPI y/y (%)"
 
 . 
-. save "data/analysis/macro_analysis.dta", replace
-file data/analysis/macro_analysis.dta saved
+. save "data/analysis/macro_data.dta", replace
+(file data/analysis/macro_data.dta not found)
+file data/analysis/macro_data.dta saved
 
 . 
 end of do-file
@@ -142,48 +148,75 @@ end of do-file
 . set more off
 
 . 
-. use "data/analysis/macro_analysis.dta", clear
+. use "data/analysis/macro_data.dta", clear
 
 . 
 . twoway ///
->     (scatter unrate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
->     (lfit unrate inflation, lcolor(red) lwidth(medium)), ///
+>     (scatter unemployment_rate inflation, msymbo
+> l(circle) msize(small) mcolor(blue)) ///
+>     (lfit unemployment_rate inflation, lcolor(re
+> d) lwidth(medium)), ///
 >     ytitle("Unemployment rate (%)") ///
 >     xtitle("Inflation, y/y (%)") ///
->     title("Scatterplot of Unemployment vs. Inflation with Fitted Line") ///
+>     title("Scatterplot of Unemployment vs. Infla
+> tion with Fitted Line") ///
 >     legend(order(1 "Data" 2 "Linear fit")) ///
 >     graphregion(color(white))
 
 . 
-. graph export "output/figures/unemployment_inflation.png", ///
+. graph export "results/figures/unemployment_infla
+> tion.png", ///
 >     replace width(1400)
 file
-    /Users/krise/Documents/GitHub/review-of-financial-studies/template-stata/o
-    > utput/figures/unemployment_inflation.png saved as PNG format
+    /Users/krise/Documents/GitHub/review-of-fina
+    > ncial-studies/template-stata/results/figur
+    > es/unemployment_inflation.png saved as PNG
+    format
 
 . 
-. reg unrate inflation
+. reg unemployment_rate inflation
 
-      Source |       SS           df       MS      Number of obs   =       669
--------------+----------------------------------   F(1, 667)       =      1.87
-       Model |  5.49819838         1  5.49819838   Prob > F        =    0.1717
-    Residual |  1958.66643       667  2.93653138   R-squared       =    0.0028
--------------+----------------------------------   Adj R-squared   =    0.0013
-       Total |  1964.16463       668  2.94036621   Root MSE        =    1.7136
+      Source |       SS           df       MS     
+>  Number of obs   =       669
+-------------+----------------------------------  
+>  F(1, 667)       =     68.89
+       Model |  183.885621         1  183.885621  
+>  Prob > F        =    0.0000
+    Residual |    1780.279       667  2.66908396  
+>  R-squared       =    0.0936
+-------------+----------------------------------  
+>  Adj R-squared   =    0.0923
+       Total |  1964.16463       668  2.94036621  
+>  Root MSE        =    1.6337
 
-------------------------------------------------------------------------------
-      unrate | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-   inflation |   .0331725   .0242429     1.37   0.172    -.0144292    .0807741
-       _cons |   5.934933   .1151634    51.53   0.000     5.708806    6.161059
-------------------------------------------------------------------------------
+--------------------------------------------------
+> ----------------------------
+unemployme~e | Coefficient  Std. err.      t    P>
+> |t|                                             
+>         [95% con                                
+>                 f. interval]
+-------------+------------------------------------
+> ----------------------------
+   inflation |   -.001481   .0001784    -8.30   0.
+> 000                                             
+>        -.0018314                                
+>                    -.0011307
+       _cons |   6.816553    .110516    61.68   0.
+> 000                                             
+>         6.599552                                
+>                     7.033554
+--------------------------------------------------
+> ----------------------------
 
 . 
-. esttab using "output/tables/phillips_regression.txt", ///
+. esttab using "results/tables/phillips_regression
+> .txt", ///
 >     replace se label ///
->     title("Regression of unemployment on inflation") ///
+>     title("Regression of unemployment on inflati
+> on") ///
 >     b(%6.3f) se(%6.3f)
-(output written to output/tables/phillips_regression.txt)
+(output written to results/tables/phillips_regress
+> ion.txt)
 
 . 
 end of do-file
@@ -191,8 +224,9 @@ end of do-file
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-
-> stata/output/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-
+> of-financial-studies/template-stata/results/log/
+> _main.log
   log type:  text
- closed on:  27 Nov 2025, 07:57:39
---------------------------------------------------------------------------------
+ closed on:  27 Nov 2025, 19:00:45
+--------------------------------------------------

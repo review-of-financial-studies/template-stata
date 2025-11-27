@@ -1,11 +1,11 @@
 clear all
 set more off
 
-use "data/analysis/macro_analysis.dta", clear
+use "data/analysis/macro_data.dta", clear
 
 twoway ///
-    (scatter unrate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
-    (lfit unrate inflation, lcolor(red) lwidth(medium)), ///
+    (scatter unemployment_rate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
+    (lfit unemployment_rate inflation, lcolor(red) lwidth(medium)), ///
     ytitle("Unemployment rate (%)") ///
     xtitle("Inflation, y/y (%)") ///
     title("Scatterplot of Unemployment vs. Inflation with Fitted Line") ///
@@ -15,7 +15,7 @@ twoway ///
 graph export "results/figures/unemployment_inflation.png", ///
     replace width(1400)
 
-reg unrate inflation
+reg unemployment_rate inflation
 
 esttab using "results/tables/phillips_regression.txt", ///
     replace se label ///
