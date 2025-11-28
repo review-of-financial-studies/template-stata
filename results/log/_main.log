@@ -1,8 +1,9 @@
---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-stata/results/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-of-financial-
+> studies/template-stata/results/log/_main.log
   log type:  text
- opened on:  28 Nov 2025, 10:33:57
+ opened on:  28 Nov 2025, 17:03:56
 
 . 
 . do "code/download_raw_data.do"
@@ -13,7 +14,8 @@
 
 . 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRAT
+> E", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 933 obs)
@@ -40,7 +42,8 @@ file data/raw/unemployment_rate.dta saved
 . clear
 
 . import delimited using ///
->     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL", ///
+>     "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAU
+> CSL", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
 (2 vars, 945 obs)
@@ -142,36 +145,57 @@ end of do-file
 
 . 
 . twoway ///
->     (scatter unemployment_rate inflation, msymbol(circle) msize(small) mcolor(blue)) ///
->     (lfit unemployment_rate inflation, lcolor(red) lwidth(medium)), ///
+>     (scatter unemployment_rate inflation, msymbol(circle) msi
+> ze(small) mcolor(blue)) ///
+>     (lfit unemployment_rate inflation, lcolor(red) lwidth(med
+> ium)), ///
 >     ytitle("Unemployment rate (%)") ///
 >     xtitle("Inflation, y/y (%)") ///
->     title("Scatterplot of Unemployment vs. Inflation with Fitted Line") ///
+>     title("Scatterplot of Unemployment vs. Inflation with Fit
+> ted Line") ///
 >     legend(order(1 "Data" 2 "Linear fit")) ///
 >     graphregion(color(white))
 
 . 
-. graph export "results/figures/unemployment_inflation.png", ///
+. graph export "results/figures/unemployment_inflation.png", //
+> /
 >     replace width(1400)
-file /Users/krise/Documents/GitHub/review-of-financial-studies/template-stata/results/figures/unemployment_inflation.png saved as PNG
-    format
+file
+    /Users/krise/Documents/GitHub/review-of-financial-studies
+    > /template-stata/results/figures/unemployment_inflation.
+    > png saved as PNG format
 
 . 
 . reg unemployment_rate inflation
 
-      Source |       SS           df       MS      Number of obs   =       669
--------------+----------------------------------   F(1, 667)       =     68.89
-       Model |  183.885621         1  183.885621   Prob > F        =    0.0000
-    Residual |    1780.279       667  2.66908396   R-squared       =    0.0936
--------------+----------------------------------   Adj R-squared   =    0.0923
-       Total |  1964.16463       668  2.94036621   Root MSE        =    1.6337
+      Source |       SS           df       MS      Number of ob
+> s   =       669
+-------------+----------------------------------   F(1, 667)   
+>     =     68.89
+       Model |  183.885621         1  183.885621   Prob > F    
+>     =    0.0000
+    Residual |    1780.279       667  2.66908396   R-squared   
+>     =    0.0936
+-------------+----------------------------------   Adj R-square
+> d   =    0.0923
+       Total |  1964.16463       668  2.94036621   Root MSE    
+>     =    1.6337
 
-------------------------------------------------------------------------------
-unemployme~e | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-   inflation |   -.001481   .0001784    -8.30   0.000    -.0018314   -.0011307
-       _cons |   6.816553    .110516    61.68   0.000     6.599552    7.033554
-------------------------------------------------------------------------------
+---------------------------------------------------------------
+> ---------------
+unemployme~e | Coefficient  Std. err.      t    P>|t|     [95% 
+> con                                                          
+>    f. interval]
+-------------+-------------------------------------------------
+> ---------------
+   inflation |   -.001481   .0001784    -8.30   0.000    -.0018
+> 314                                                          
+>       -.0011307
+       _cons |   6.816553    .110516    61.68   0.000     6.599
+> 552                                                          
+>        7.033554
+---------------------------------------------------------------
+> ---------------
 
 . 
 . esttab using "results/tables/phillips_regression.txt", ///
@@ -186,7 +210,8 @@ end of do-file
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/krise/Documents/GitHub/review-of-financial-studies/template-stata/results/log/_main.log
+       log:  /Users/krise/Documents/GitHub/review-of-financial-
+> studies/template-stata/results/log/_main.log
   log type:  text
- closed on:  28 Nov 2025, 10:33:59
---------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  28 Nov 2025, 17:03:58
+---------------------------------------------------------------

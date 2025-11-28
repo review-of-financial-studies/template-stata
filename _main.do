@@ -4,9 +4,9 @@ set more off
 
 capture log close
 
-local dirs "data" "data/raw" "data/analysis" "results" "results/figures" "results/log" "results/tables"  "code"
+local dirs data data/raw data/analysis results results/log results/figures results/tables
 foreach dir of local dirs {
-    capture mkdir "`dir'"
+	capture mkdir `dir'
 }
 
 log using "results/log/_main.log", replace

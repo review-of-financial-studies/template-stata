@@ -4,7 +4,7 @@
 
 This repository serves as a template for reproducible Stata projects, addressing three common challenges:
 
-- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project root directory. The most convenient method is to use Stata Projects (*File → New → Project…*, e.g., `template-stata.stpr`), which open Stata and automatically set the correct working directory. Alternatively, users can manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
+- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project's root directory. The simplest approach is to place `_main.do` in the root and open it directly. A more recent alternative is to use (*File → New → Project…*, e.g., `template-stata.stpr`), which open Stata and automatically set the correct working directory. Users may also manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
 - **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided, as they are only supported on Windows.
 - **Dependencies**: The `dependencies.do` file ensures all required packages are installed automatically.
 - **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) (version 1.1) for standardized replication packages.
