@@ -9,7 +9,7 @@ foreach dir of local dirs {
 	capture mkdir `dir'
 }
 
-log using "results/log/_main.log", replace
+log using "results/log/main.log", replace
 
 do "code/download_raw_data.do"
 do "code/create_analysis_data.do"

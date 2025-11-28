@@ -4,7 +4,7 @@
 
 This repository serves as a template for reproducible Stata projects, addressing three common challenges:
 
-- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project's root directory. The simplest approach is to place `_main.do` in the root and open it directly. A more recent alternative is to use (*File → New → Project…*, e.g., `template-stata.stpr`), which open Stata and automatically set the correct working directory. Users may also manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
+- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project's root directory. The simplest approach is to place `main.do` in the root and open it directly. A more recent alternative is to use (*File → New → Project…*, e.g., `template-stata.stpr`), which open Stata and automatically set the correct working directory. Users may also manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
 - **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided, as they are only supported on Windows.
 - **Dependencies**: The `dependencies.do` file ensures all required packages are installed automatically.
 - **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) (version 1.1) for standardized replication packages.
@@ -119,10 +119,10 @@ The code was last run on a **standard desktop machine with MacOS with an interne
 
 The replication package contains four Stata do-files:
 
-1. **`code/download_raw_data.do`**: Downloads raw unemployment and CPI data from FRED and saves them as Stata datasets in `data/raw/`
-2. **`code/create_analysis_data.do`**: Merges the raw datasets, calculates year-over-year inflation rates, formats dates, and creates the final analysis dataset
-3. **`code/analyze_data.do`**: Produces the scatterplot with fitted line and runs the regression analysis
-4. **`code/_main.do`**: Master file that runs all programs in sequence and creates a log file
+1. **`main.do`**: Master file that creates required folders, runs all programs in sequence and creates a log file
+2. **`code/download_raw_data.do`**: Downloads raw unemployment and CPI data from FRED and saves them as Stata datasets in `data/raw/`
+3. **`code/create_analysis_data.do`**: Merges the raw datasets, calculates year-over-year inflation rates, formats dates, and creates the final analysis dataset
+4. **`code/analyze_data.do`**: Produces the scatterplot with fitted line and runs the regression analysis
 
 All results are automatically saved to the appropriate directories (`results/figures/`, `results/tables/`, and `results/log/`).
 
@@ -154,7 +154,7 @@ The replication package expects the following directory structure (folders will 
 2. Ensure you have an active internet connection (required to download data from FRED)
 4. Open Stata and set your working directory to the replication package root folder
 5. Run `do "dependencies.do"` to install required packages
-6. Run `do "code/_main.do"`
+6. Run `do "main.do"`
 
 The master file will:
 - Download the raw data from FRED
