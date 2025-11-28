@@ -4,7 +4,7 @@
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- opened on:  28 Nov 2025, 17:16:11
+ opened on:  28 Nov 2025, 21:16:21
 
 . 
 . do "code/download_raw_data.do"
@@ -227,5 +227,5 @@ end of do-file
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- closed on:  28 Nov 2025, 17:16:15
+ closed on:  28 Nov 2025, 21:16:22
 --------------------------------------------------
