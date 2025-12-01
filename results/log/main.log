@@ -4,9 +4,10 @@
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- opened on:  28 Nov 2025, 21:16:21
+ opened on:   1 Dec 2025, 19:20:45
 
 . 
+. * Run code
 . do "code/download_raw_data.do"
 
 . clear all
@@ -221,11 +222,12 @@ unemployme~e | Coefficient  Std. err.      t    P>
 end of do-file
 
 . 
+. * Close log
 . log close
       name:  <unnamed>
        log:  /Users/krise/Documents/GitHub/review-
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- closed on:  28 Nov 2025, 21:16:22
+ closed on:   1 Dec 2025, 19:20:47
 --------------------------------------------------

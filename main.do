@@ -4,8 +4,8 @@ set more off
 capture log close
 
 * Set ado path to environment
-adopath - OLDPLACE
-adopath - PERSONAL
+capture adopath - OLDPLACE
+capture adopath - PERSONAL
 sysdir set PLUS "ado"
 adopath ++ PLUS
 
