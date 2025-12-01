@@ -4,9 +4,9 @@
 
 This repository serves as a template for reproducible Stata projects, addressing three common challenges:
 
-- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project's root directory. The simplest approach is to place `main.do` in the root and open it directly. A more recent alternative is to use (*File → New → Project…*, e.g., `template-stata.stpr`), which open Stata and automatically set the correct working directory. Users may also manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
+- **Project execution**: Scripts should never use `cd some/path` to change the working directory, as this breaks portability and will not work on other machines. Instead, Stata should always be launched from the project's root directory. The simplest approach is to place `main.do` in the root and open it directly. A more recent alternative is to use (*File → New → Project…*, e.g., `template-stata.stpr`), which opens Stata and automatically sets the correct working directory. Users may also manually set the working directory via the Stata GUI (*File → Change Working Directory…*).
 - **Portability**: Relative file paths using forward slashes (`"/"`) allow the code to run on any system without modification. Backslashes (`"\"`) should be avoided, as they are only supported on Windows.
-- **Dependencies**: The `setup.do` file documents how the [Stata environment](https://larsvilhuber.github.io/self-checking-reproducibility/22-reproducing-environments-stata.html) is configured and which is included in the package under the `ado` path.
+- **Dependencies**: The `setup.do` file documents how the [Stata environment](https://larsvilhuber.github.io/self-checking-reproducibility/22-reproducing-environments-stata.html) is configured and what is included in the package under the `ado` path.
 - **Documentation**: The README follows the [Social Science Data Editors template](https://social-science-data-editors.github.io/template_README/) (version 1.1) for standardized replication packages.
 
 Addressing these challenges before submission significantly streamlines the review process, saving time and effort for both data editors and authors.
@@ -76,7 +76,7 @@ The Consumer Price Index for All Urban Consumers (CPI-U) data is also sourced fr
 - **Stata** (code was last run with version 18)
   - `esttab` command (from `estout` package)
   
-The packages are included in the `ado` directory. The `main.do` automatically sets the adopath to include this directory. The `setup.do` documents how these were installed, and can be used to re-install, if so desired (not suggested).
+The packages are included in the `ado` directory. The `main.do` automatically sets the `adopath` to include this directory. The `setup.do` file documents how these were installed, and can be used to re-install them, if so desired (not suggested).
 
 ### Controlled Randomness
 
