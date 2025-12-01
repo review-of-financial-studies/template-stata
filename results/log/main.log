@@ -4,7 +4,7 @@
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- opened on:   1 Dec 2025, 19:20:45
+ opened on:   1 Dec 2025, 19:34:06
 
 . 
 . * Run code
@@ -117,7 +117,7 @@ Time variable: date, 1948m1 to 2025m9
         Delta: 1 month
 
 . 
-. gen inflation = (cpi - L12.cpi) * 100
+. gen inflation = (cpi - L12.cpi) / L12.cpi * 100
 (12 missing values generated)
 
 . drop if missing(inflation, unemployment_rate)
@@ -179,15 +179,15 @@ file
       Source |       SS           df       MS     
 >  Number of obs   =       669
 -------------+----------------------------------  
->  F(1, 667)       =     68.89
-       Model |  183.885621         1  183.885621  
->  Prob > F        =    0.0000
-    Residual |    1780.279       667  2.66908396  
->  R-squared       =    0.0936
+>  F(1, 667)       =      2.10
+       Model |  6.15573519         1  6.15573519  
+>  Prob > F        =    0.1481
+    Residual |  1958.00889       667  2.93554556  
+>  R-squared       =    0.0031
 -------------+----------------------------------  
->  Adj R-squared   =    0.0923
+>  Adj R-squared   =    0.0016
        Total |  1964.16463       668  2.94036621  
->  Root MSE        =    1.6337
+>  Root MSE        =    1.7133
 
 --------------------------------------------------
 > ----------------------------
@@ -197,14 +197,14 @@ unemployme~e | Coefficient  Std. err.      t    P>
 >                 f. interval]
 -------------+------------------------------------
 > ----------------------------
-   inflation |   -.001481   .0001784    -8.30   0.
+   inflation |   .0331267   .0228762     1.45   0.
+> 148                                             
+>        -.0117912                                
+>                     .0780447
+       _cons |   5.931275   .1129899    52.49   0.
 > 000                                             
->        -.0018314                                
->                    -.0011307
-       _cons |   6.816553    .110516    61.68   0.
-> 000                                             
->         6.599552                                
->                     7.033554
+>         5.709416                                
+>                     6.153134
 --------------------------------------------------
 > ----------------------------
 
@@ -229,5 +229,5 @@ end of do-file
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- closed on:   1 Dec 2025, 19:20:47
+ closed on:   1 Dec 2025, 19:34:08
 --------------------------------------------------

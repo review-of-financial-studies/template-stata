@@ -3,11 +3,11 @@ Regression of unemployment on inflation
                               (1)   
                      Unemployme~)   
 ------------------------------------
-Inflation, CPI y/y~)       -0.001***
-                          (0.000)   
+Inflation, CPI y/y~)        0.033   
+                          (0.023)   
 
-Constant                    6.817***
-                          (0.111)   
+Constant                    5.931***
+                          (0.113)   
 ------------------------------------
 Observations                  669   
 ------------------------------------

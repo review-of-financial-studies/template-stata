@@ -13,7 +13,7 @@ drop date date_daily
 rename date_monthly date
 tsset date, monthly
 
-gen inflation = (cpi - L12.cpi) * 100
+gen inflation = (cpi - L12.cpi) / L12.cpi * 100
 drop if missing(inflation, unemployment_rate)
 keep if date >= tm(1970m1)
 
