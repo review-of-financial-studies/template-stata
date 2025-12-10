@@ -119,7 +119,7 @@ The code was last run on a **standard desktop machine with MacOS with an interne
 The replication package contains five Stata do-files:
 
 1. **`setup.do`**: Documents how the environment is configured; does not need to be executed if the `ado`-path from the replication package is used.
-2. **`main.do`**: Master file that creates required folders, runs all programs in sequence and creates a log file
+2. **`main.do`**: Main file that creates required folders, runs all programs in sequence and creates a log file
 3. **`code/download_raw_data.do`**: Downloads raw unemployment and CPI data from FRED and saves them as Stata datasets in `data/raw/`
 4. **`code/create_analysis_data.do`**: Merges the raw datasets, calculates year-over-year inflation rates, formats dates, and creates the final analysis dataset
 5. **`code/analyze_data.do`**: Produces the scatterplot with fitted line and runs the regression analysis
