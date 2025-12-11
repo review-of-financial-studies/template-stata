@@ -4,7 +4,7 @@
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- opened on:   1 Dec 2025, 19:34:06
+ opened on:  11 Dec 2025, 12:24:24
 
 . 
 . * Run code
@@ -38,8 +38,11 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/unemployment_rate.dta", replace
-file data/raw/unemployment_rate.dta saved
+. pq save "data/raw/unemployment_rate.parquet", re
+> place
+File saved to /Users/krise/Documents/GitHub/review
+> -of-financial-studies/template-stata/data/raw/un
+> employment_rate.parquet
 
 . 
 . clear
@@ -66,8 +69,10 @@ Duplicates in terms of date
 . sort date
 
 . 
-. save "data/raw/cpi.dta", replace
-file data/raw/cpi.dta saved
+. pq save "data/raw/cpi.parquet", replace
+File saved to /Users/krise/Documents/GitHub/review
+> -of-financial-studies/template-stata/data/raw/cp
+> i.parquet
 
 . 
 end of do-file
@@ -79,9 +84,20 @@ end of do-file
 . set more off
 
 . 
-. use "data/raw/unemployment_rate.dta", clear
+. pq use "data/raw/unemployment_rate.parquet", cle
+> ar
 
-. merge 1:1 date using "data/raw/cpi.dta"
+. pq merge 1:1 date using "data/raw/cpi.parquet"
+Loading parquet file and saving to temporary dta
+
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+        date |          0
+         cpi |        945    123.4215    88.82391 
+>      21.48    324.368
+Merging to data
 
     Result                      Number of obs
     -----------------------------------------
@@ -127,16 +143,11 @@ Time variable: date, 1948m1 to 2025m9
 (252 observations deleted)
 
 . 
-. label var date     "Month"
-
-. label var unemployment_rate    "Unemployment rat
-> e (%)"
-
-. label var inflation "Inflation, CPI y/y (%)"
-
-. 
-. save "data/analysis/macro_data.dta", replace
-file data/analysis/macro_data.dta saved
+. pq save "data/analysis/macro_data.parquet", repl
+> ace
+File saved to /Users/krise/Documents/GitHub/review
+> -of-financial-studies/template-stata/data/analys
+> is/macro_data.parquet
 
 . 
 end of do-file
@@ -148,7 +159,15 @@ end of do-file
 . set more off
 
 . 
-. use "data/analysis/macro_data.dta", clear
+. pq use "data/analysis/macro_data.parquet", clear
+
+. 
+. label var date "Month"
+
+. label var unemployment_rate "Unemployment rate (
+> %)"
+
+. label var inflation "Inflation, CPI y/y (%)"
 
 . 
 . twoway ///
@@ -229,5 +248,5 @@ end of do-file
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- closed on:   1 Dec 2025, 19:34:08
+ closed on:  11 Dec 2025, 12:24:25
 --------------------------------------------------

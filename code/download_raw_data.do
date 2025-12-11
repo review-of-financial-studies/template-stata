@@ -10,7 +10,7 @@ drop if missing(date)
 duplicates drop date, force
 sort date
 
-save "data/raw/unemployment_rate.dta", replace
+pq save "data/raw/unemployment_rate.parquet", replace
 
 clear
 import delimited using ///
@@ -22,4 +22,4 @@ drop if missing(date)
 duplicates drop date, force
 sort date
 
-save "data/raw/cpi.dta", replace
+pq save "data/raw/cpi.parquet", replace

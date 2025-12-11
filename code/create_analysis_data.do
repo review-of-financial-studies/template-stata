@@ -1,8 +1,8 @@
 clear all
 set more off
 
-use "data/raw/unemployment_rate.dta", clear
-merge 1:1 date using "data/raw/cpi.dta"
+pq use "data/raw/unemployment_rate.parquet", clear
+pq merge 1:1 date using "data/raw/cpi.parquet"
 keep if _merge == 3
 drop _merge
 
@@ -17,8 +17,4 @@ gen inflation = (cpi - L12.cpi) / L12.cpi * 100
 drop if missing(inflation, unemployment_rate)
 keep if date >= tm(1970m1)
 
-label var date     "Month"
-label var unemployment_rate    "Unemployment rate (%)"
-label var inflation "Inflation, CPI y/y (%)"
-
-save "data/analysis/macro_data.dta", replace
+pq save "data/analysis/macro_data.parquet", replace

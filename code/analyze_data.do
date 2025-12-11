@@ -1,7 +1,11 @@
 clear all
 set more off
 
-use "data/analysis/macro_data.dta", clear
+pq use "data/analysis/macro_data.parquet", clear
+
+label var date "Month"
+label var unemployment_rate "Unemployment rate (%)"
+label var inflation "Inflation, CPI y/y (%)"
 
 twoway ///
     (scatter unemployment_rate inflation, msymbol(circle) msize(small) mcolor(blue)) ///

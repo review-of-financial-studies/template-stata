@@ -7,4 +7,5 @@ adopath ++ PLUS
 
 * Install required packages into environment
 * NOTE: installed packages from the environment can be shipped with the package
+ssc install pq, replace
 ssc install estout, replace
