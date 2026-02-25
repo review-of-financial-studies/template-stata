@@ -4,7 +4,7 @@
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- opened on:  11 Dec 2025, 12:24:24
+ opened on:  25 Feb 2026, 16:54:18
 
 . 
 . * Run code
@@ -20,7 +20,7 @@
 > .csv?id=UNRATE", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
-(2 vars, 933 obs)
+(2 vars, 937 obs)
 
 . 
 . rename (observation_date unrate) (date unemploym
@@ -52,7 +52,7 @@ File saved to /Users/krise/Documents/GitHub/review
 > .csv?id=CPIAUCSL", ///
 >     varnames(1) stringcols(1) clear
 (encoding automatically selected: ISO-8859-1)
-(2 vars, 945 obs)
+(2 vars, 949 obs)
 
 . 
 . rename (observation_date cpiaucsl) (date cpi)
@@ -95,8 +95,8 @@ Loading parquet file and saving to temporary dta
 -------------+------------------------------------
 > ---------------------
         date |          0
-         cpi |        945    123.4215    88.82391 
->      21.48    324.368
+         cpi |        948    124.0621    89.40953 
+>      21.48    326.588
 Merging to data
 
     Result                      Number of obs
@@ -107,7 +107,7 @@ Merging to data
         from using                         12  (_m
 > erge==2)
 
-    Matched                               933  (_m
+    Matched                               937  (_m
 > erge==3)
     -----------------------------------------
 
@@ -129,15 +129,15 @@ Merging to data
 
 . tsset date, monthly
 
-Time variable: date, 1948m1 to 2025m9
+Time variable: date, 1948m1 to 2026m1
         Delta: 1 month
 
 . 
 . gen inflation = (cpi - L12.cpi) / L12.cpi * 100
-(12 missing values generated)
+(13 missing values generated)
 
 . drop if missing(inflation, unemployment_rate)
-(12 observations deleted)
+(13 observations deleted)
 
 . keep if date >= tm(1970m1)
 (252 observations deleted)
@@ -196,17 +196,17 @@ file
 . reg unemployment_rate inflation
 
       Source |       SS           df       MS     
->  Number of obs   =       669
+>  Number of obs   =       672
 -------------+----------------------------------  
->  F(1, 667)       =      2.10
-       Model |  6.15573519         1  6.15573519  
->  Prob > F        =    0.1481
-    Residual |  1958.00889       667  2.93554556  
->  R-squared       =    0.0031
+>  F(1, 670)       =      2.26
+       Model |  6.62024484         1  6.62024484  
+>  Prob > F        =    0.1335
+    Residual |  1965.55096       670  2.93365815  
+>  R-squared       =    0.0034
 -------------+----------------------------------  
->  Adj R-squared   =    0.0016
-       Total |  1964.16463       668  2.94036621  
->  Root MSE        =    1.7133
+>  Adj R-squared   =    0.0019
+       Total |  1972.17121       671  2.93915232  
+>  Root MSE        =    1.7128
 
 --------------------------------------------------
 > ----------------------------
@@ -216,14 +216,14 @@ unemployme~e | Coefficient  Std. err.      t    P>
 >                 f. interval]
 -------------+------------------------------------
 > ----------------------------
-   inflation |   .0331267   .0228762     1.45   0.
-> 148                                             
->        -.0117912                                
->                     .0780447
-       _cons |   5.931275   .1129899    52.49   0.
+   inflation |   .0343359   .0228568     1.50   0.
+> 134                                             
+>        -.0105438                                
+>                     .0792155
+       _cons |   5.919377   .1127096    52.52   0.
 > 000                                             
->         5.709416                                
->                     6.153134
+>         5.698071                                
+>                     6.140684
 --------------------------------------------------
 > ----------------------------
 
@@ -248,5 +248,5 @@ end of do-file
 > of-financial-studies/template-stata/results/log/
 > main.log
   log type:  text
- closed on:  11 Dec 2025, 12:24:25
+ closed on:  25 Feb 2026, 16:54:20
 --------------------------------------------------

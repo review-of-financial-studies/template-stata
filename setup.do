@@ -1,8 +1,9 @@
 * Create directory for environment
+* NOTE: most packages install into PLUS, some into PERSONAL
 capture mkdir ado
 sysdir set PLUS "ado"
+sysdir set PERSONAL "ado"
 adopath - OLDPLACE
-adopath - PERSONAL
 adopath ++ PLUS
 
 * Install required packages into environment
